@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  section[id] { scroll-margin-top: 90px; }
+  body { overflow-x: hidden; }
+  @media (max-width: 900px) { html { scroll-padding-top: 76px; } section[id] { scroll-margin-top: 76px; } }
+  @media (max-width: 640px) { html { scroll-padding-top: 68px; } section[id] { scroll-margin-top: 68px; } }
+  body { margin: 0; background-color: #fbf6f5; background-image: radial-gradient(circle at 10px 10px, rgba(0,0,0,0.035) 1.1px, transparent 1.6px), radial-gradient(circle at 30px 30px, rgba(0,0,0,0.028) 1.1px, transparent 1.6px), radial-gradient(circle at 20px 34px, rgba(0,0,0,0.02) 0.9px, transparent 1.4px); background-size: 40px 40px, 40px 40px, 40px 40px; color: #000000; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; }
+  a { color: #000000; text-decoration: none; }
+  a:hover { color: oklch(0.55 0.09 20); }
+  * { box-sizing: border-box; }
+  [data-nav-toggle] { display: none; }
+  [data-nav-mobile] { display: none; }
+  @media (max-width: 900px) {
+    [data-r="fab"][data-fab-on="1"] { display: inline-flex !important; }
+    #kontakt { padding: 64px 28px !important; }
+    #kontakt [data-r="two"] { gap: 40px !important; }
+    [data-r="form"] { gap: 16px !important; }
+    header { padding: 14px 24px !important; }
+    [data-nav-desktop] { display: none !important; }
+    [data-nav-toggle] { display: flex !important; }
+    [data-nav-mobile] { display: block !important; }
+    section { padding-left: 28px !important; padding-right: 28px !important; }
+    #algus { padding: 0 !important; }
+    [data-r="lead"] { padding: 44px 28px !important; }
+    [data-r="two"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+    section[id^="lugu-"] { padding: 64px 28px !important; }
+    section[id^="lugu-"] > div:first-child { padding: 0 !important; }
+    section[id^="lugu-"] [data-r="two"] { grid-template-columns: 0.8fr 1fr !important; gap: 32px !important; }
+    [data-r="lugu-txt"] { padding: 0 !important; }
+    [data-r="galerii"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; padding: 44px 28px !important; }
+    footer { padding: 28px !important; }
+  }
+  @media (max-width: 640px) {
+    section[id^="lugu-"] { padding: 52px 20px !important; }
+    section[id^="lugu-"] [data-r="two"] { grid-template-columns: 1fr !important; gap: 24px !important; }
+    section[id^="lugu-"] [data-r="two"] > figure { order: -1; }
+    [data-r="lugu-txt"] { padding: 0 !important; gap: 16px !important; }
+    section[id^="lugu-"] h2 { font-size: 26px !important; }
+    [data-r="form"] { grid-template-columns: 1fr !important; gap: 14px !important; }
+    [data-r="form"] > div[style=""], [data-r="form"] > div:empty { display: none !important; }
+    [data-r="form"] input, [data-r="form"] select, [data-r="form"] textarea { padding: 12px 0 !important; }
+    [data-r="form"] button[type="submit"] { width: 100%; text-align: center; padding: 16px 24px !important; }
+    #kontakt { padding: 48px 20px !important; }
+    #kontakt h2 { font-size: 28px !important; }
+    [data-hide-mobile] { display: none; }
+    header { padding: 12px 20px !important; }
+    section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 56px !important; padding-bottom: 56px !important; }
+    #algus { padding: 0 !important; }
+    [data-r="lead"] { padding: 36px 20px !important; }
+    [data-r="galerii"] { grid-template-columns: 1fr !important; padding: 36px 20px !important; }
+    footer { padding: 24px 20px !important; }
+  }
+  @media (max-width: 640px) {
+    [data-lbx="overlay"] { padding: 12px !important; gap: 12px !important; }
+    [data-lbx="row"] { position: relative; gap: 0 !important; width: 100% !important; justify-content: center; }
+    [data-lbx="row"] img { max-width: 100% !important; max-height: 70vh !important; }
+    [data-lbx="row"] button { position: absolute; top: 50%; transform: translateY(-50%); width: 42px !important; height: 42px !important; background: rgba(20,10,12,0.55) !important; }
+    [data-lbx="row"] button:first-of-type { left: 4px; }
+    [data-lbx="row"] button:last-of-type { right: 4px; }
+  }
+</style>
+</helmet>
+
+<div style="max-width: 100%">
+
+  <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; row-gap: 12px; column-gap: 24px; padding: 18px 40px; background: rgba(251,246,245,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.09)">
+    <a href="index.html" style="font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: oklch(0.44 0.09 8)">Ivika Kübarsepp</a>
+    <nav data-nav-desktop="1" style="display: flex; flex-wrap: wrap; align-items: center; row-gap: 10px; column-gap: clamp(14px, 1.8vw, 28px); font-size: clamp(12px, 1.15vw, 13.5px); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500">
+      <span style="position: relative; display: inline-flex; align-items: center" onMouseEnter="{{ openSub }}" onMouseLeave="{{ closeSub }}">
+        <a href="index.html#tooted" style="display: inline-flex; align-items: center; gap: 7px">Kudumid <span style="font-size: 9px; opacity: 0.6">▾</span></a>
+        <span style="position: absolute; top: 100%; left: -18px; min-width: 268px; padding-top: 14px; opacity: {{ subOpacity }}; visibility: {{ subVis }}; transition: opacity 200ms ease">
+          <span style="display: flex; flex-direction: column; padding: 8px 0; background: #fffcfb; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 14px 34px rgba(0,0,0,0.08)">
+            <a href="perfektsed-kleidid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Pruutidele</a>
+            <a href="vabaajakleidid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Vabaaja- ja laste kleidid</a>
+            <a href="aksessuaarid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Aksessuaarid</a>
+            <a href="haapsalu-sallid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Haapsalu sallid ja -rätid</a>
+            <a href="beebidele.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Beebidele</a>
+            <a href="laos.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Laos</a>
+          </span>
+        </span>
+      </span>
+      <a href="index.html#minust">Minust</a>
+      <a href="index.html#koolitused">Koolitused</a>
+      <a href="perfektsed-kleidid.html">Kliendi lugu</a>
+      <a href="index.html#kkk">KKK</a>
+      <a href="#kontakt" data-hide-mobile="1" style="padding: 10px 20px; background: oklch(0.44 0.09 8); border: 1px solid oklch(0.44 0.09 8); border-radius: 999px; color: #fdf7f6" style-hover="background: oklch(0.36 0.08 8); color: #fdf7f6; border-color: oklch(0.36 0.08 8)">Võta ühendust</a>
+    </nav>
+
+    <button type="button" data-nav-toggle="1" aria-label="Menüü" onClick="{{ toggleMenu }}" style="width: 46px; height: 46px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; background: none; border: 1px solid rgba(0,0,0,0.25); border-radius: 999px; cursor: pointer" style-hover="border-color: oklch(0.44 0.09 8)">
+      <span style="display: block; width: 18px; height: 1px; background: #000000"></span>
+      <span style="display: block; width: 18px; height: 1px; background: #000000"></span>
+      <span style="display: block; width: 18px; height: 1px; background: #000000"></span>
+    </button>
+
+    <nav data-nav-mobile="1" style="width: 100%; max-height: {{ menuH }}; overflow: hidden; transition: max-height 300ms ease">
+      <div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 0 4px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500">
+        <a href="index.html#tooted" style="padding: 13px 0; border-top: 1px solid rgba(0,0,0,0.12)">Kudumid</a>
+        <a href="perfektsed-kleidid.html" style="padding: 10px 0 10px 18px; font-size: 12.5px; font-weight: 400; text-transform: none; letter-spacing: 0.02em; opacity: 0.8">Pruutidele</a>
+        <a href="vabaajakleidid.html" style="padding: 10px 0 10px 18px; font-size: 12.5px; font-weight: 400; text-transform: none; letter-spacing: 0.02em; opacity: 0.8">Vabaaja- ja laste kleidid</a>
+        <a href="aksessuaarid.html" style="padding: 10px 0 10px 18px; font-size: 12.5px; font-weight: 400; text-transform: none; letter-spacing: 0.02em; opacity: 0.8">Aksessuaarid</a>
+        <a href="haapsalu-sallid.html" style="padding: 10px 0 10px 18px; font-size: 12.5px; font-weight: 400; text-transform: none; letter-spacing: 0.02em; opacity: 0.8">Haapsalu sallid ja -rätid</a>
+        <a href="beebidele.html" style="padding: 10px 0 10px 18px; font-size: 12.5px; font-weight: 400; text-transform: none; letter-spacing: 0.02em; opacity: 0.8">Beebidele</a>
+        <a href="laos.html" style="padding: 10px 0 14px 18px; font-size: 12.5px; font-weight: 400; text-transform: none; letter-spacing: 0.02em; opacity: 0.8">Laos</a>
+        <a href="index.html#minust" style="padding: 13px 0; border-top: 1px solid rgba(0,0,0,0.12)">Minust</a>
+        <a href="index.html#koolitused" style="padding: 13px 0; border-top: 1px solid rgba(0,0,0,0.12)">Koolitused</a>
+        <a href="perfektsed-kleidid.html" style="padding: 13px 0; border-top: 1px solid rgba(0,0,0,0.12)">Kliendi lugu</a>
+        <a href="index.html#kkk" style="padding: 13px 0; border-top: 1px solid rgba(0,0,0,0.12)">KKK</a>
+      </div>
+    </nav>
+  </header>
+
+  <section id="algus" data-screen-label="Perfektsed kleidid" style="display: flex; flex-direction: column; gap: 0; padding: 0; border-bottom: 1px solid rgba(0,0,0,0.09)">
+    <div data-r="lead" style="display: flex; flex-direction: column; gap: 16px; padding: 56px 64px; background: #f8eeee">
+      <a href="index.html#tooted" style="align-self: flex-start; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: oklch(0.44 0.09 8)">← Kudumid</a>
+      <h1 style="margin: 0; font-weight: 300; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.05; letter-spacing: -0.018em; text-wrap: pretty">Pruutidele</h1>
+      <p style="margin: 0; max-width: 72ch; font-size: 15.5px; line-height: 1.72; font-weight: 300; text-wrap: pretty">Iga pruutkleit sünnib personaalselt: kõigepealt ideena tulevase pruudi mõtetes, siis joonisena paberil ning koostöös professionaalsete õmblejatega saab pulmapäeval imekaunis mõrsja oma kleidiga altari ette astuda.</p>
+      <p style="margin: 0; max-width: 72ch; font-size: 15.5px; line-height: 1.72; font-weight: 300; text-wrap: pretty">See on suur õnn olla nende kudumite looja! Aitäh teile, kallid senised pruudid, et olete usaldanud oma elu kõige tähtsama päeva kleidi minu varrastele. Siit lehelt leiad iga kleidi loo – kõik nad on omamoodi muinasjutulised ja kordumatud!</p>
+      <p style="margin: 0; max-width: 72ch; font-size: 15.5px; line-height: 1.72; font-weight: 300; text-wrap: pretty">Tahad ka oma pulmapäeval hõljuda õhkõrnas käsitööna kootud pitskleidis, -seelikus, -jakis või -pluusis – võimalusi on mitmeid! Võta julgelt ühendust ja leiame Sulle sobiva!</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px">
+        <a href="#kontakt" style="padding: 15px 28px; background: oklch(0.44 0.09 8); color: #fdf7f6; border-radius: 999px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase" style-hover="background: oklch(0.36 0.08 8); color: #fdf7f6">Võta ühendust</a>
+        <a href="#lugu-heidi" style="padding: 15px 28px; border: 1px solid oklch(0.44 0.09 8 / 0.45); color: oklch(0.44 0.09 8); border-radius: 999px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase" style-hover="background: oklch(0.44 0.09 8); color: #fdf7f6; border-color: oklch(0.44 0.09 8)">Loe lugusid</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="lugu-heidi" data-screen-label="Heidi bodysuit" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: #f8eeee; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Heidi bodysuit</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 1fr 0.85fr; gap: 64px; align-items: start">
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">Unista, ja Sulle antakse… aga kui juba unistama julged hakata, siis ikka suurelt! Ja nii ma teinud olengi, mille tulemusena on vaikselt iga minu lõngaunistus täitunud. Väga-väga pikalt olen ise imetlenud, nüüd sain varrastega valmiski vormida.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">..novembri algus, tempokas tööpäev on jõudnud lõunasse, tohutu küpsiseisu, lippan kiirelt poodi. Autost väljudes kiikan korraks telefoni ja näen Heidi kirja – body soov, ooo! Parklast poodi kõndides katsun kiirelt vastata, peas tiksumas mõte, ”no ma ei ole ju seda kunagi varem teinud… aga …aga… kootakse ju, seega on ikka tehtav…”. ..kontorisse tagasi jõudes hüppan taas töörongile ja unustan hetkeks selle teema. Hetk hiljem hakkas siiski tõsiselt põnev – vastus saabus!</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Body sai kootud mõõtude järgi, mõõdud sai võetud kolmekesi läbi videokõne: mina juhendasin ja Heidi tulevane toimetas ümber modelli. Kolm nädalat lõnga seadmist ja body sai kinkekarpi – õrn, sulgkerge, keha hellitavalt paitav.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Imeilusat teekonda teile, noored!</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Lõng</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Villa-siidi-kašmiirisegu (28/2, 100 g = 1400 m), šampanjavalge</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Koekiri</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Ümara lehe kiri, vardad 2,5</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Detailid</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Nööpideks pärlid</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Ajakulu</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">3 nädalat põhitöö kõrvalt</span>
+          </div>
+        </div>
+        </div>
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/lood/heidi-1.jpg" alt="Heidile kootud pitsist bodysuit" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+      </div>
+  </section>
+
+  <section id="lugu-helen" data-screen-label="Heleni pitspluus" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: transparent; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Heleni pitspluus</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: start">
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/lood/helen-1.jpg" alt="Helen kootud pitspluusis" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">Helen, see särav ja soe kaunis noor naine kirjutas mulle juba kevadel, olles kindel, et tema pikka kootud kleiti pulmapäevaks ei soovi, kuid üks õrn ja kaunis pitspluus võiks küll olla. Selline, mida saab kanda ka peale tähtsat päeva pidulikel puhkudel. Pluus, mis on nii õrn ja samas nii soe, sobib nii pika kui lühikese seelikuga ning miks mitte ka püksiga… Oma sära lisab see igal juhul!</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Helen ja Rauno abiellusid 7.septembril – trehvas olema imekaunis päev mille jäädvustas Brita Binsol.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Heleni enda kommentaar peale pulmapäeva: See oli minu jaoks ainuõige valik. Tundsin ennast selles pluusis terve päev väga mugavalt ja külalised ei jõudnud ära kiita.. Ja minu süda oli rahul! Las fotod räägivad enda eest…</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Kaunist kooskasvamist teile, noored</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Lõng</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Villa-siidi-kašmiirisegu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Koekiri</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Poollehekiri, vardad 2,5</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Kaal</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">30 g</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Fotod</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Brita Binsol</span>
+          </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+  <section id="lugu-stina" data-screen-label="Stina" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: #f8eeee; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Stina</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 1fr 0.85fr; gap: 64px; align-items: start">
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">John Lennon on kunagi öelnud: ”Armastus on lubadus, armastus on suveniir. Kui see on sulle antud, ei saa seda kunagi unustada, ära lase sel kunagi kaduda!”</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Stina ja Tõnis on leidnud oma tee, oma armastuse – hoidke ja kasvatage seda! Nautige iga pisiasja oma argipäevas, talletage head mälestused, et oleks mida aastate pärast, mererannas kuuvalgel ööl, varbaid sooja liiva sisse surudes, meenutada! Ja ma loodan, et see kootud pitskampsun sobib Stinale ka aastate möödudes, meenutamaks seda imekaunist päeva!</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Aitäh usalduse eest!</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Lõng</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Villa-siidi-kašmiirisegu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Koekiri</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Sirelilehekiri</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Märkus</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Proove teha ei õnnestunud – vahemõõtmised tehtud mannekeenil</span>
+          </div>
+        </div>
+        </div>
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/lood/stina-1.jpg" alt="Stina kootud pitskampsunis" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+      </div>
+  </section>
+
+  <section id="lugu-liilia" data-screen-label="Liilia" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: transparent; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Liilia</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: start">
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/lood/liilia-1.jpg" alt="Liilia kootud pitspruutkleidis Viru rabas" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">Ajal, mil metshaldjad Viru raba servas õhtuudu ootasid, jalutas üks julge haldjapruut läbi nende radade õnneliku abielu poole… Õnneks on ju tegelikult vähe vaja – armastatud kaaslasest piisab, kellega koos ühiseid sihte seada, käsikäes tulevikku vaadata. 2.septembril 2017 abiellus imekaunis Liilia, kandes pulmapäeval kootud kleiti, minu kootud.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Ja taas sai kleit alguse kirjade teel umbes pool aastat enne tähtpäeva, aprillis. Imelihtne on täita pruutide unistusi kes teavad, mida nad soovivad. Liilia teadis! Kudumi puhul küll päris kõiki nüansse teostada ei anna, näiteks ei õnnestu kududa nurki, aga vaatamata sellele saavad tulemused kaunid ja omapärased.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Imelisi hetki teineteise seltsis pikkadeks aastateks</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Kaal</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Ainult 110 g – õhkõrn ja imekerge</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Aluskleit</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Kadri Sitska, Antoniuse õu, Tartu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Fotod</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Ingrid Lauringson (Viru raba ja Kolga mõis)</span>
+          </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+  <section id="lugu-5" data-screen-label="Triinu" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: #f8eeee; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Triinu</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 1fr 0.85fr; gap: 64px; align-items: start">
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">Õnn ei sõltu välistest teguritest, vaid sellest, kuidas meie neid tõlgendame! (Lev Tolstoi)</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Triinu ja Priidu tõlgendus on olla õnnelik, nautida iga hetke päevas ja muidugi teineteist!</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Iga kokkusaamine, mis meil Triinuga 2021.aasta suvel oli, oli siiralt soe ja muinasjutuline. See harmoonia, mis sai alguse juba nende koduõues, mis esimest korda paduvihmas meid vastu võttis, jätkus toas.. Soojus, ehedus, siirus – selle kõige pärast saangi nimetada Triinu meie (minu ja Svea) haldjapruudiks.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">..ja kui hästi on suutnud fotograaf Cärol Liis Metsla tabada seda armastust! See kõik on ehe, mina tean! Saan tänada taas tähti, kes ristasid meie teed – aitäh Triin, et andsid võimaluse endale kududa!</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">See kõik oli nauding isegi kell pool kolm teisipäeva öösel, kui purunenud lõnga tõttu ligi 300 imepisikest pärli mu elutoa põrandal laiali olid ja järgmisel keskpäeval pidime Sinu poole startima, et kleit üle anda….ja pärlid said alla serva paika veel samal ööl…. Jah, isegi siis oli see puhas rõõm!</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Imelist teekonda, mu kallid!</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Lõng</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Villa-siidi-kašmiirisegu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Koekiri</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Sirelilehekiri</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Kaal</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">150 g</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Aluskleit</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Svea Mäesalu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Fotod</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Carol Liis Metsla Photography, 8. august 2021</span>
+          </div>
+        </div>
+        </div>
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/triinu.jpg" alt="Triinu kootud pitspruutkleidis kaasikus" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+      </div>
+  </section>
+
+  <section id="lugu-3" data-screen-label="Mirjam" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: transparent; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Mirjam</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: start">
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/mirjam.jpg" alt="Mirjam pitsist pulmakleidis" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">Hindan väga pruute, kes varakult ette mõtlevad – nii saame kõik detailid läbi mõelda ja kleidi kudumine, mis võtab aega, ei jää viimasele minutile. Mirjam leidis mu veebruaris 2016. 20.juuliks oli õmblejal aluskleidi toorik valmis ja mina sain vardad lõnga ajada. Täpselt kuu ja 2 päeva hiljem saime taas õmbleja juures kokku ja andsime kleidi üle – piisava varuga, et pruut saaks rahulikult keskenduda muudele toimetustele.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Aluskleidi osas (nagu ka mitme järgnevagi osas) tegime koostööd Jaanika Stuudioga, ehk selle kauni pruudiga, kellele oli au kududa just vahetult eelmine komplekt – ehk õiged inimesed tulevad meie ellu täpselt õigel ajal.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Kootud kleidid on imeliselt õhulised ja kerged – kuigi siia kleiti kulus 2,7 kilomeetrit lõnga, kaalub see vaid 193 grammi!</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Kaunist kooskasvamist!</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Lõng</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Villa-siidi-kašmiirisegu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Koekiri</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Sirelilehekiri, vöökohal läbilõige rombikirjaga, vardad 2,5</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Kaal</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">180 g</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Fotod</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Grethe Rõõm</span>
+          </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+  <section id="lugu-maris" data-screen-label="Maris" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: #f8eeee; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Maris</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 1fr 0.85fr; gap: 64px; align-items: start">
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">Kaunis kudum sünnib soojast koostööst! Marise esimene kiri mulle oli täis soojust ja armastust käsitöö vastu. Et tema kallim oli talle teinud abieluettepaneku tavapärase kihlasõrmuse asemel haapsalu salliga, oli kootud kleit ainuke tema jaoks mõeldav lahendus pruutkleidiks. Ja ma olen siiralt õnnelik, et selle soovi täitmiseks valis ta minu.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Meie peaaegu kahekuuline koostöö oli täis soojust, sära ja imearmast vahetut suhtlemist – aitäh! Mustrite valik oli lihtne, Maris ei peljanud rombe ja nii sai kleidi seelikuossa mulle endale väga armas Aasa kiri ja ülaossa Tõllakiri Haapsalu rätiraamatust.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Maris ja Robert – olgu teie tee täis üksteisemõistmist ja armastust. Leidke igasse päeva üks killuke päikest!</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Lõng</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Villa-siidi-kašmiirisegu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Koekirjad</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Aasa kiri ja Tõllakiri</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Kaal</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Veidi alla 200 g</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Mõõdud</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Alumise ääre laius 3,6 meetrit</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Fotod</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Sigrid Kuusk Photography</span>
+          </div>
+        </div>
+        </div>
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/lood/maris-1.jpg" alt="Maris kootud pitspruutkleidis" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+      </div>
+  </section>
+
+  <section id="lugu-2" data-screen-label="Jaanika" style="display: flex; flex-direction: column; gap: 34px; padding: 96px 64px; background: transparent; border-bottom: 1px solid rgba(0,0,0,0.09)">
+      <div style="display: flex; align-items: baseline; gap: 18px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: 0.02em">Jaanika</h2>
+        <span style="flex: 1; height: 1px; background: rgba(0,0,0,0.16)"></span>
+      </div>
+      <div data-r="two" style="display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: start">
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+          <img src="images/jaanika-tauno.jpg" alt="Jaanika pitsist pruutkleidis" data-lb="1" onClick="{{ openImg }}" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; cursor: zoom-in">
+        </figure>
+        <div data-r="lugu-txt" style="display: flex; flex-direction: column; gap: 18px; padding: 0">
+          <p style="margin: 0; font-size: 17.5px; line-height: 1.6; font-weight: 300; text-wrap: pretty">Janika ja Tauno abiellusid 2016.aasta mai alguses. Kui pruutpaar Tartu Pauluse kirikusse sisenes ei suutnud ma tükk aega hingata – nii imeline oli näha oma kätetööd kauni pruudi seljas. Liiati, et olin ju alles nii algaja…</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Jaanika leidis mu varakult – juba novembris 2015. Veebruari alguses istusime maha ja panime paika, mismoodi täpselt komplekt saama peab ja jäi vaid kudumise rõõm. Tartlastena oli lihtne iga teatud aja tagant proove teha veendumaks, et töö kasvab õiges mõõdus ja tempos. Ja aprilli lõpus, nädal enne pulmi, oli minu poolt kõik valmis.</p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.74; font-weight: 300; text-wrap: pretty">Õnne ja õnnestumisi! Aitäh, et usaldasite!</p>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.14)">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Lõng</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Villa-siidi-kašmiirisegu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Koekirjad</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Pluus pajulehekirjas, seelik karukellakirjas, vardad 2,0–3,0</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 4px 18px">
+            <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(0.5 0.09 14)">Kaal</span>
+            <span style="font-size: 14px; line-height: 1.6; font-weight: 300">Pluus 30 g, seelik 130 g</span>
+          </div>
+        </div>
+        </div>
+      </div>
+  </section>
+
+  <section id="pildid" data-screen-label="Kleidid" style="display: flex; flex-direction: column; gap: 26px; padding: 96px 64px; border-bottom: 1px solid rgba(0,0,0,0.09)">
+    <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: 0.02em">Sagadi mõisa pulmamess</h2>
+    <div data-r="galerii" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; width: 100%">
+      <div onClick="{{ openImg }}" data-lb-card="1" style="position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; cursor: zoom-in" style-hover="outline: 1px solid #000000">
+        <img src="images/pruutkleidid.jpg" alt="Pruutkleidid Sagadi mõisas" data-lb="1" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+      </div>
+      <div onClick="{{ openImg }}" data-lb-card="1" style="position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; cursor: zoom-in" style-hover="outline: 1px solid #000000">
+        <img src="images/sagadi-pulmamess.jpg" alt="Kleidid Sagadi mõisa pulmamessil" data-lb="1" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+      </div>
+      <div onClick="{{ openImg }}" data-lb-card="1" style="position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; cursor: zoom-in" style-hover="outline: 1px solid #000000">
+        <img src="images/sagadi-tolla-juures.jpg" alt="Pruut kootud pitskleidis tõlla juures Sagadi mõisas" data-lb="1" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+      </div>
+      <div onClick="{{ openImg }}" data-lb-card="1" style="position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; cursor: zoom-in" style-hover="outline: 1px solid #000000">
+        <img src="images/sagadi-peegli-ees.jpg" alt="Kootud pitspruutkleidid peegli ees Sagadi mõisas" data-lb="1" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+      </div>
+    </div>
+  </section>
+
+  <section id="kutse" data-screen-label="Kutse" style="padding: 84px 64px; background: oklch(0.88 0.045 12); border-bottom: 1px solid rgba(0,0,0,0.09)">
+    <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px">
+      <p style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-size: clamp(23px, 2.3vw, 32px); line-height: 1.42; text-wrap: pretty">Tahad ka oma pulmapäeval hõljuda õhkõrnas käsitööna kootud pitskleidis?</p>
+      <a href="#kontakt" style="padding: 16px 30px; background: oklch(0.44 0.09 8); color: #fdf7f6; border-radius: 999px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase" style-hover="background: oklch(0.36 0.08 8); color: #fdf7f6">Võta ühendust</a>
+    </div>
+  </section>
+
+  <section id="kontakt" data-screen-label="Kontakt" style="padding: 96px 64px; background: #000000; color: #f8eeee">
+    <div data-r="two" style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px">
+      <div style="display: flex; flex-direction: column; gap: 22px">
+        <h2 style="margin: 0; font-family: Didot, 'Didot LT STD', 'Hoefler Text', 'Cormorant Garamond', Garamond, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.1">Võta ühendust</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px; font-size: 15.5px; font-weight: 300">
+          <span style="opacity: 0.6; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase">Kontakt</span>
+          <a href="mailto:haapsall@gmail.com" style="color: #f8eeee; border-bottom: 1px solid rgba(248,238,238,0.35); align-self: flex-start" style-hover="color: #fff; border-color: #fff">haapsall@gmail.com</a>
+          <a href="tel:+37256488348" style="color: #f8eeee; border-bottom: 1px solid rgba(248,238,238,0.35); align-self: flex-start" style-hover="color: #fff; border-color: #fff">+372 56 488348</a>
+          <a href="https://www.facebook.com/Haapsalusallid" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; color: #f8eeee; border-bottom: 1px solid rgba(248,238,238,0.35); align-self: flex-start" style-hover="color: #fff; border-color: #fff">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.77l-.44 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"></path></svg>
+            Haapsalu sallid
+          </a>
+          <span style="opacity: 0.75; margin-top: 8px">Filato OÜ; reg.nr: 14401197</span>
+        </div>
+      </div>
+
+      <form onSubmit="{{ submit }}" data-r="form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase">
+          <span>Nimi *</span>
+          <input type="text" name="nimi" value="{{ f_nimi }}" onChange="{{ onNimi }}" style="padding: 14px 0; background: none; border: none; border-bottom: 1px solid rgba(248,238,238,0.4); outline: none; font-size: 16px; letter-spacing: 0; text-transform: none" style-focus="border-color: #fff">
+          <span style="font-size: 12px; letter-spacing: 0; text-transform: none; color: oklch(0.78 0.13 30); min-height: 16px">{{ e_nimi }}</span>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase">
+          <span>E-post *</span>
+          <input type="email" name="epost" value="{{ f_epost }}" onChange="{{ onEpost }}" style="padding: 14px 0; background: none; border: none; border-bottom: 1px solid rgba(248,238,238,0.4); outline: none; font-size: 16px; letter-spacing: 0; text-transform: none" style-focus="border-color: #fff">
+          <span style="font-size: 12px; letter-spacing: 0; text-transform: none; color: oklch(0.78 0.13 30); min-height: 16px">{{ e_epost }}</span>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase">
+          <span>Telefon *</span>
+          <input type="tel" name="telefon" value="{{ f_telefon }}" onChange="{{ onTelefon }}" style="padding: 14px 0; background: none; border: none; border-bottom: 1px solid rgba(248,238,238,0.4); outline: none; font-size: 16px; letter-spacing: 0; text-transform: none" style-focus="border-color: #fff">
+          <span style="font-size: 12px; letter-spacing: 0; text-transform: none; color: oklch(0.78 0.13 30); min-height: 16px">{{ e_telefon }}</span>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase">
+          <span>Teenuse tüüp *</span>
+          <select name="toode" value="{{ f_toode }}" onChange="{{ onToode }}" style="padding: 14px 0; background: none; border: none; border-bottom: 1px solid rgba(248,238,238,0.4); outline: none; font-size: 16px; letter-spacing: 0; text-transform: none" style-focus="border-color: #fff">
+            <option value="" style="color: #000000">Vali…</option>
+            <option value="pruutkleit" style="color: #000000">Pruutkleit</option>
+            <option value="kleit" style="color: #000000">Vabaaja- või lastekleit</option>
+            <option value="sall" style="color: #000000">Haapsalu sall</option>
+            <option value="beebitekk" style="color: #000000">Beebitekk</option>
+            <option value="aksessuaar" style="color: #000000">Aksessuaar</option>
+            <option value="koolitus" style="color: #000000">Koolitus</option>
+            <option value="muu" style="color: #000000">Muu</option>
+          </select>
+          <span style="font-size: 12px; letter-spacing: 0; text-transform: none; color: oklch(0.78 0.13 30); min-height: 16px">{{ e_toode }}</span>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase">
+          <span>Soovitud tähtaeg</span>
+          <input type="date" lang="et" name="tahtaeg" value="{{ f_tahtaeg }}" onChange="{{ onTahtaeg }}" style="padding: 14px 0; background: none; border: none; border-bottom: 1px solid rgba(248,238,238,0.4); outline: none; font-size: 16px; letter-spacing: 0; text-transform: none; color-scheme: dark" style-focus="border-color: #fff">
+          <span style="font-size: 12px; letter-spacing: 0; text-transform: none; color: oklch(0.78 0.13 30); min-height: 16px">{{ e_tahtaeg }}</span>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase">
+          <span>Mustrieelistus</span>
+          <input type="text" name="muster" value="{{ f_muster }}" onChange="{{ onMuster }}" placeholder="nt pajulehekiri, ümara lehe kiri" style="padding: 14px 0; background: none; border: none; border-bottom: 1px solid rgba(248,238,238,0.4); outline: none; font-size: 16px; letter-spacing: 0; text-transform: none" style-focus="border-color: #fff">
+          <span style="font-size: 12px; letter-spacing: 0; text-transform: none; opacity: 0.55; min-height: 16px">Kui eelistust pole, jäta tühjaks</span>
+        </label>
+        <label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase">
+          <span>Sõnum *</span>
+          <textarea name="sonum" rows="4" value="{{ f_sonum }}" onChange="{{ onSonum }}" style="padding: 14px 0; background: none; border: none; border-bottom: 1px solid rgba(248,238,238,0.4); outline: none; resize: vertical; font-size: 16px; letter-spacing: 0; text-transform: none" style-focus="border-color: #fff"></textarea>
+          <span style="font-size: 12px; letter-spacing: 0; text-transform: none; color: oklch(0.78 0.13 30); min-height: 16px">{{ e_sonum }}</span>
+        </label>
+        <div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 6px">
+          <button type="submit" style="padding: 17px 34px; background: #f8eeee; color: #000000; border: none; border-radius: 999px; cursor: pointer; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500" style-hover="background: oklch(0.88 0.04 20)">Saada päring</button>
+          <span style="font-size: 14.5px; font-weight: 300">{{ status }}</span>
+        </div>
+        <p style="grid-column: 1 / -1; margin: 0; font-size: 13px; font-weight: 300; opacity: 0.6">Tähisega * väljad on kohustuslikud.</p>
+      </form>
+    </div>
+  </section>
+
+  <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-lbx="overlay" onClick="{{ closeImg }}" style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; background: rgba(20,10,12,0.88); cursor: zoom-out">
+      <button type="button" onClick="{{ closeImg }}" aria-label="Sulge" style="position: fixed; top: 20px; right: 20px; z-index: 61; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(253,247,246,0.4); background: rgba(20,10,12,0.55); color: #fdf7f6; font-size: 22px; line-height: 1; cursor: pointer; font-family: inherit" style-hover="background: rgba(253,247,246,0.22)">×</button>
+      <div data-lbx="row" onClick="{{ stop }}" style="display: flex; align-items: center; justify-content: center; gap: 20px; max-width: 100%">
+        <button type="button" onClick="{{ prevImg }}" aria-label="Eelmine" style="flex: none; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(253,247,246,0.4); background: rgba(253,247,246,0.08); color: #fdf7f6; font-size: 20px; cursor: pointer; font-family: inherit" style-hover="background: rgba(253,247,246,0.2)">←</button>
+        {{ lightboxImg }}
+        <button type="button" onClick="{{ nextImg }}" aria-label="Järgmine" style="flex: none; width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(253,247,246,0.4); background: rgba(253,247,246,0.08); color: #fdf7f6; font-size: 20px; cursor: pointer; font-family: inherit" style-hover="background: rgba(253,247,246,0.2)">→</button>
+      </div>
+      <span style="color: #fdf7f6; font-size: 15px; font-weight: 300; letter-spacing: 0.04em">{{ lightboxAlt }}</span>
+    </div>
+  </sc-if>
+
+  <footer style="padding: 34px 64px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; font-size: 13px; font-weight: 300; border-top: 1px solid rgba(0,0,0,0.09)">
+    <span>© Ivika Kübarsepp — armastusega lõngast</span>
+    <span style="display: flex; gap: 22px">
+      <a href="https://www.facebook.com/Haapsalusallid" target="_blank" rel="noopener" aria-label="Facebook" style="display: inline-flex; align-items: center; gap: 8px">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.77l-.44 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"></path></svg>
+        Facebook
+      </a>
+      <span style="position: relative; display: inline-flex; align-items: center" onMouseEnter="{{ openSub }}" onMouseLeave="{{ closeSub }}">
+        <a href="index.html#tooted" style="display: inline-flex; align-items: center; gap: 7px">Kudumid <span style="font-size: 9px; opacity: 0.6">▾</span></a>
+        <span style="position: absolute; bottom: 100%; left: -18px; min-width: 268px; padding-bottom: 14px; opacity: {{ subOpacity }}; visibility: {{ subVis }}; transition: opacity 200ms ease">
+          <span style="display: flex; flex-direction: column; padding: 8px 0; background: #fffcfb; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 14px 34px rgba(0,0,0,0.08)">
+            <a href="perfektsed-kleidid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Pruutidele</a>
+            <a href="vabaajakleidid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Vabaaja- ja laste kleidid</a>
+            <a href="aksessuaarid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Aksessuaarid</a>
+            <a href="haapsalu-sallid.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Haapsalu sallid ja -rätid</a>
+            <a href="beebidele.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Beebidele</a>
+            <a href="laos.html" style="padding: 11px 22px; font-size: 12.5px; letter-spacing: 0.06em" style-hover="background: #f8eeee; color: oklch(0.44 0.09 8)">Laos</a>
+          </span>
+        </span>
+      </span>
+      <a href="index.html#kkk">KKK</a>
+      <a href="#kontakt">Kontakt</a>
+    </span>
+  </footer>
+
+  <a href="#kontakt" data-r="fab" data-fab-on="{{ fabOn }}" style="display: none; position: fixed; right: 16px; bottom: 16px; z-index: 55; align-items: center; gap: 9px; padding: 15px 22px; background: oklch(0.44 0.09 8); color: #fdf7f6; border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,0.22); font-family: -apple-system, system-ui, sans-serif; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase" style-hover="background: oklch(0.36 0.08 8); color: #fdf7f6">Võta ühendust</a>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  jumpToHash() {
+    let id = (window.location.hash || "").slice(1);
+    if (!id) {
+      try { id = sessionStorage.getItem("omJump") || ""; sessionStorage.removeItem("omJump"); } catch (er) {}
+    }
+    if (!id) return;
+    const prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = "auto";
+    const t0 = Date.now();
+    const pin = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        const head = document.querySelector("header");
+        const off = head ? head.getBoundingClientRect().height : 0;
+        const y = el.getBoundingClientRect().top + window.scrollY - off - 8;
+        if (Math.abs(window.scrollY - y) > 2) window.scrollTo(0, y);
+      }
+      if (Date.now() - t0 < 2500) requestAnimationFrame(pin);
+      else document.documentElement.style.scrollBehavior = prev;
+    };
+    requestAnimationFrame(pin);
+  }
+  fabInit() {
+    this._fab = () => {
+      const hero = document.getElementById("algus");
+      const kontakt = document.getElementById("kontakt");
+      const past = hero ? hero.getBoundingClientRect().bottom < 40 : true;
+      const near = kontakt ? kontakt.getBoundingClientRect().top < window.innerHeight - 60 : false;
+      const on = past && !near;
+      if (on !== this.state.fabOn) this.setState({ fabOn: on });
+    };
+    window.addEventListener("scroll", this._fab, { passive: true });
+    window.addEventListener("resize", this._fab);
+    this._fab();
+  }
+  state = { fabOn: false, subOpen: false, menuOpen: false, lightbox: null, form: { nimi: "", epost: "", telefon: "", toode: "", tahtaeg: "", muster: "", sonum: "" }, errors: {}, status: "" };
+  list = [];
+  componentDidMount() {
+    this.fabInit();
+    this.jumpToHash();
+    this._key = (e) => {
+      if (!this.state.lightbox) return;
+      if (e.key === "Escape") this.setState({ lightbox: null });
+      if (e.key === "ArrowRight") this.step(1);
+      if (e.key === "ArrowLeft") this.step(-1);
+    };
+    window.addEventListener("keydown", this._key);
+  }
+  componentWillUnmount() { window.removeEventListener("keydown", this._key); }
+  collect() {
+    this.els = Array.from(document.querySelectorAll("img[data-lb]"));
+    this.list = this.els.map(i => ({ src: i.getAttribute("src"), alt: i.getAttribute("alt") }));
+  }
+  step(d) {
+    if (!this.list.length) this.collect();
+    const i = this.list.findIndex(x => x.src === this.state.lightbox.src);
+    const n = (i + d + this.list.length) % this.list.length;
+    this.setState({ lightbox: this.list[n] });
+  }
+  setField(k, v) {
+    this.setState(s => ({ form: Object.assign({}, s.form, { [k]: v }), errors: Object.assign({}, s.errors, { [k]: "" }), status: "" }));
+  }
+  validate() {
+    const f = this.state.form, e = {};
+    if (!f.nimi.trim()) e.nimi = "Palun sisesta oma nimi.";
+    if (!f.epost.trim()) e.epost = "Palun sisesta e-posti aadress.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.epost.trim())) e.epost = "Kontrolli e-posti aadressi.";
+    if (!f.telefon.trim()) e.telefon = "Palun sisesta telefoninumber.";
+    if (!f.toode) e.toode = "Palun vali teenuse tüüp.";
+    if (f.sonum.trim().length < 10) e.sonum = "Kirjuta paari lausega, mida soovid.";
+    return e;
+  }
+  submit = (ev) => {
+    ev.preventDefault();
+    const e = this.validate();
+    if (Object.keys(e).length) {
+      this.setState({ errors: e, status: "Palun täida kohustuslikud väljad." });
+      return;
+    }
+    this.setState({
+      errors: {}, status: "Aitäh! Päring on saadetud — vastan paari päeva jooksul.",
+      form: { nimi: "", epost: "", telefon: "", toode: "", tahtaeg: "", muster: "", sonum: "" }
+    });
+  };
+  renderVals() {
+    const _f = this.state.form, _er = this.state.errors;
+    return {
+      fabOn: this.state.fabOn ? "1" : "0",
+      f_nimi: _f.nimi, f_epost: _f.epost, f_telefon: _f.telefon, f_toode: _f.toode, f_tahtaeg: _f.tahtaeg, f_muster: _f.muster, f_sonum: _f.sonum,
+      e_nimi: _er.nimi || "", e_epost: _er.epost || "", e_telefon: _er.telefon || "", e_toode: _er.toode || "", e_tahtaeg: _er.tahtaeg || "", e_sonum: _er.sonum || "",
+      onNimi: ev => this.setField("nimi", ev.target.value),
+      onEpost: ev => this.setField("epost", ev.target.value),
+      onTelefon: ev => this.setField("telefon", ev.target.value),
+      onToode: ev => this.setField("toode", ev.target.value),
+      onTahtaeg: ev => this.setField("tahtaeg", ev.target.value),
+      onMuster: ev => this.setField("muster", ev.target.value),
+      onSonum: ev => this.setField("sonum", ev.target.value),
+      submit: this.submit,
+      status: this.state.status,
+      lightboxOpen: !!this.state.lightbox,
+      lightboxImg: this.state.lightbox ? React.createElement("img", { src: this.state.lightbox.src, alt: this.state.lightbox.alt, style: { maxWidth: "min(820px, 100%)", maxHeight: "76vh", objectFit: "contain", boxShadow: "0 20px 60px rgba(0,0,0,0.4)" } }) : null,
+      lightboxAlt: this.state.lightbox ? this.state.lightbox.alt : "",
+      openImg: (e) => { this.collect(); const im = e.currentTarget.querySelector("img[data-lb]") || e.currentTarget; const i = this.els.indexOf(im); if (im) this.setState({ lightbox: { i: i, src: im.getAttribute("src"), alt: im.getAttribute("alt") } }); },
+      closeImg: () => this.setState({ lightbox: null }),
+      prevImg: (e) => { e.stopPropagation(); this.step(-1); },
+      nextImg: (e) => { e.stopPropagation(); this.step(1); },
+      stop: (e) => e.stopPropagation(),
+      subOpacity: this.state.subOpen ? 1 : 0,
+      subVis: this.state.subOpen ? "visible" : "hidden",
+      openSub: () => this.setState({ subOpen: true }),
+      closeSub: () => this.setState({ subOpen: false }),
+      menuH: this.state.menuOpen ? "760px" : "0px",
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen }))
+    };
+  }
+}
+</script>
+</body>
+</html>
